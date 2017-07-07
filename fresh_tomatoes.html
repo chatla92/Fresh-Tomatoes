@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            display: block;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerIMDBId = $(this).attr('data-trailer-IMDB-id')
+            var sourceUrl = 'http://www.imdb.com/video/imdb/vi' + trailerIMDBId + '/imdb/embed?autoplay=1&width=640&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0,
+              'width': "640",
+              'height': "360",
+              'scrolling': "no"
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="531039513" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Avatar </h4>
+    <h6>Director:James Cameron</h6>
+    <h6>Duartion:178<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3362042649" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjM2Nzg4MzkwOF5BMl5BanBnXkFtZTgwNzA0OTE3NjE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Spectre </h4>
+    <h6>Director:Sam Mendes</h6>
+    <h6>Duartion:148<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2376312089" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Dark Knight Rises </h4>
+    <h6>Director:Christopher Nolan</h6>
+    <h6>Duartion:164<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2340397337" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNjkyOTI5MDA0Ml5BMl5BanBnXkFtZTcwOTU3NzExNw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>John Carter </h4>
+    <h6>Director:Andrew Stanton</h6>
+    <h6>Duartion:132<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="385091865" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTAxNDYxMjg0MjNeQTJeQWpwZ15BbWU3MDcyNTk2OTM@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Tangled </h4>
+    <h6>Director:Nathan Greno</h6>
+    <h6>Duartion:100<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2821566745" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Avengers: Age of Ultron </h4>
+    <h6>Director:Joss Whedon</h6>
+    <h6>Duartion:141<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1236534041" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzU3NDg4NTAyNV5BMl5BanBnXkFtZTcwOTg2ODg1Mg@@._V1_UY1200_CR74,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Harry Potter and the Half-Blood Prince </h4>
+    <h6>Director:David Yates</h6>
+    <h6>Duartion:153<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1946858521" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Batman v Superman: Dawn of Justice </h4>
+    <h6>Director:Zack Snyder</h6>
+    <h6>Duartion:183<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="641508889" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTU3NzA5MjI0Nl5BMl5BanBnXkFtZTcwMTEwNzMzMQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Superman Returns </h4>
+    <h6>Director:Bryan Singer</h6>
+    <h6>Duartion:169<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1024524313" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0MjI4MDI5MF5BMl5BanBnXkFtZTcwODkwNjk3MQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Quantum of Solace </h4>
+    <h6>Director:Marc Forster</h6>
+    <h6>Duartion:106<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="460432921" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjI3Mjk5MTUxOV5BMl5BanBnXkFtZTcwNTMyNzY3OQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Lone Ranger </h4>
+    <h6>Director:Gore Verbinski</h6>
+    <h6>Duartion:150<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="705668633" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjI5OTYzNjI0Ml5BMl5BanBnXkFtZTcwMzM1NDA1OQ@@._V1_UY1200_CR96,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Man of Steel </h4>
+    <h6>Director:Zack Snyder</h6>
+    <h6>Duartion:143<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1793261849" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTIwOTA4NTE4Ml5BMl5BanBnXkFtZTcwOTI2NTg1MQ@@._V1_UY1200_CR91,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Chronicles of Narnia: Prince Caspian </h4>
+    <h6>Director:Andrew Adamson</h6>
+    <h6>Duartion:150<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1891149081" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Avengers </h4>
+    <h6>Director:Joss Whedon</h6>
+    <h6>Duartion:173<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3747192089" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE5MjkwODI3Nl5BMl5BanBnXkFtZTcwNjcwMDk4NA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Pirates of the Caribbean: On Stranger Tides </h4>
+    <h6>Director:Rob Marshall</h6>
+    <h6>Duartion:136<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3916407065" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTU2NTYxODcwMF5BMl5BanBnXkFtZTcwNDk1NDY0Nw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Men in Black 3 </h4>
+    <h6>Director:Barry Sonnenfeld</h6>
+    <h6>Duartion:106<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1092005657" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODAzMDgxMDc1MF5BMl5BanBnXkFtZTgwMTI0OTAzMjE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Hobbit: The Battle of the Five Armies </h4>
+    <h6>Director:Peter Jackson</h6>
+    <h6>Duartion:164<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="717595161" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyOTM4MDMxNV5BMl5BanBnXkFtZTcwNjIyNzExOA@@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Amazing Spider-Man </h4>
+    <h6>Director:Marc Webb</h6>
+    <h6>Duartion:153<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="73860121" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5NzcwMzEwOF5BMl5BanBnXkFtZTcwNjg5MTgwMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Robin Hood </h4>
+    <h6>Director:Ridley Scott</h6>
+    <h6>Duartion:156<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2165155865" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzU0NDY0NDEzNV5BMl5BanBnXkFtZTgwOTIxNDU1MDE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Hobbit: The Desolation of Smaug </h4>
+    <h6>Director:Peter Jackson</h6>
+    <h6>Duartion:186<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2813395225" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM2NDkxMjQxMV5BMl5BanBnXkFtZTYwNTMxMDM4._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Golden Compass </h4>
+    <h6>Director:Chris Weitz</h6>
+    <h6>Duartion:113<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="907189785" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY1200_CR88,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Titanic </h4>
+    <h6>Director:James Cameron</h6>
+    <h6>Duartion:194<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="174044441" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Captain America: Civil War </h4>
+    <h6>Director:Anthony Russo</h6>
+    <h6>Duartion:147<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="4081754393" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjI5NTM5MDA2N15BMl5BanBnXkFtZTcwNjkwMzQxNw@@._V1_UY1200_CR64,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Battleship </h4>
+    <h6>Director:Peter Berg</h6>
+    <h6>Duartion:131<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1176612889" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ5MTE0MTk3Nl5BMl5BanBnXkFtZTgwMjczMzk2NTE@._V1_UY1200_CR64,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Jurassic World </h4>
+    <h6>Director:Colin Trevorrow</h6>
+    <h6>Duartion:124<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="973841433" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNDVhZmJiYWMtNmIzMC00ZWNiLTkzZDYtNGNlZmViMGM4OGExXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Skyfall </h4>
+    <h6>Director:Sam Mendes</h6>
+    <h6>Duartion:143<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2830738969" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTkzMjEzMjY1M15BMl5BanBnXkFtZTcwNTMxOTYyOQ@@._V1_UY1200_CR105,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Iron Man 3 </h4>
+    <h6>Director:Shane Black</h6>
+    <h6>Duartion:195<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="975438873" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Alice in Wonderland </h4>
+    <h6>Director:Tim Burton</h6>
+    <h6>Duartion:108<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2206049817" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyODgwMDU3M15BMl5BanBnXkFtZTcwOTM4MjcxOQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Monsters University </h4>
+    <h6>Director:Dan Scanlon</h6>
+    <h6>Duartion:104<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:G</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2982019609" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNjk4OTczOTk0NF5BMl5BanBnXkFtZTcwNjQ0NzMzMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Transformers: Revenge of the Fallen </h4>
+    <h6>Director:Michael Bay</h6>
+    <h6>Duartion:150<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3138759961" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjEwNTg1MTA5Nl5BMl5BanBnXkFtZTgwOTg2OTM4MTE@._V1_UY1200_CR69,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Transformers: Age of Extinction </h4>
+    <h6>Director:Michael Bay</h6>
+    <h6>Duartion:165<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3322455833" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyMzQ1ODM1MF5BMl5BanBnXkFtZTcwMjE2MTQxOQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Oz the Great and Powerful </h4>
+    <h6>Director:Sam Raimi</h6>
+    <h6>Duartion:130<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1198238233" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BOTA5NDYxNTg0OV5BMl5BanBnXkFtZTgwODE5NzU1MTE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Amazing Spider-Man 2 </h4>
+    <h6>Director:Marc Webb</h6>
+    <h6>Duartion:142<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="4134312217" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4NTk4MTk1OF5BMl5BanBnXkFtZTcwNTE2MDIwNA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>TRON: Legacy </h4>
+    <h6>Director:Joseph Kosinski</h6>
+    <h6>Duartion:125<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1822465049" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUzNTc3MTU3M15BMl5BanBnXkFtZTcwMzIxNTc3NA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Cars 2 </h4>
+    <h6>Director:John Lasseter</h6>
+    <h6>Duartion:106<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:G</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3445005593" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMyMTg3OTM5Ml5BMl5BanBnXkFtZTcwNzczMjEyNQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Green Lantern </h4>
+    <h6>Director:Martin Campbell</h6>
+    <h6>Duartion:123<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3676898329" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxOTY4Mjc0MF5BMl5BanBnXkFtZTcwNTA4MDQyMw@@._V1_UY1200_CR109,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Toy Story 3 </h4>
+    <h6>Director:Lee Unkrich</h6>
+    <h6>Duartion:103<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:G</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1188757785" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODE1MTM1MzA2NF5BMl5BanBnXkFtZTcwODQ5MTA2Mg@@._V1_UY1200_CR129,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Terminator Salvation </h4>
+    <h6>Director:McG</h6>
+    <h6>Duartion:118<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1346743833" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQxOTA2NDUzOV5BMl5BanBnXkFtZTgwNzY2MTMxMzE@._V1_UY1200_CR64,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Furious 7 </h4>
+    <h6>Director:James Wan</h6>
+    <h6>Duartion:140<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3616319001" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTg0NTgxMjIxOF5BMl5BanBnXkFtZTcwMDM0MDY1OQ@@._V1_UY1200_CR75,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>World War Z </h4>
+    <h6>Director:Marc Forster</h6>
+    <h6>Duartion:123<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3858345241" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BZGIzNWYzN2YtMjcwYS00YjQ3LWI2NjMtOTNiYTUyYjE2MGNkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>X-Men: Days of Future Past </h4>
+    <h6>Director:Bryan Singer</h6>
+    <h6>Duartion:149<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="410167577" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2NzczOTgxNF5BMl5BanBnXkFtZTcwODQ5ODczOQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Star Trek Into Darkness </h4>
+    <h6>Director:J.J. Abrams</h6>
+    <h6>Duartion:132<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="830449433" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1NDMxMjI0OV5BMl5BanBnXkFtZTcwMjQyMDExOQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Jack the Giant Slayer </h4>
+    <h6>Director:Bryan Singer</h6>
+    <h6>Duartion:114<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2949817881" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxNTk1ODcxNl5BMl5BanBnXkFtZTcwMDI1OTMzOQ@@._V1_UY1200_CR84,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Great Gatsby </h4>
+    <h6>Director:Baz Luhrmann</h6>
+    <h6>Duartion:143<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3849520153" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwNDg0NzcyMV5BMl5BanBnXkFtZTcwNjg4MjQyMw@@._V1_UY1200_CR91,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Prince of Persia: The Sands of Time </h4>
+    <h6>Director:Mike Newell</h6>
+    <h6>Duartion:116<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="513124633" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY3MTI5NjQ4Nl5BMl5BanBnXkFtZTcwOTU1OTU0OQ@@._V1_UY1200_CR91,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Pacific Rim </h4>
+    <h6>Director:Guillermo del Toro</h6>
+    <h6>Duartion:131<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="543989017" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTkwOTY0MTc1NV5BMl5BanBnXkFtZTcwMDQwNjA2NQ@@._V1_UY1200_CR86,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Transformers: Dark of the Moon </h4>
+    <h6>Director:Michael Bay</h6>
+    <h6>Duartion:154<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1806827801" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxNDUxNzcyMl5BMl5BanBnXkFtZTcwNTgwOTI3MQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Indiana Jones and the Kingdom of the Crystal Skull </h4>
+    <h6>Director:Steven Spielberg</h6>
+    <h6>Duartion:122<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2104275737" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5MTg2NjQ4MV5BMl5BanBnXkFtZTgwNzcxOTY5NjE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Good Dinosaur </h4>
+    <h6>Director:Peter Sohn</h6>
+    <h6>Duartion:93<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="678863641" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzgwODk3ODA1NF5BMl5BanBnXkFtZTcwNjU3NjQ0Nw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Brave </h4>
+    <h6>Director:Mark Andrews</h6>
+    <h6>Duartion:93<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="354465561" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BZDRiOGE5ZTctOWIxOS00MWQwLThlMDYtNWIwMDQwNzBjZDY1XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Star Trek Beyond </h4>
+    <h6>Director:Justin Lin</h6>
+    <h6>Duartion:122<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2192703769" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>WALL·E </h4>
+    <h6>Director:Andrew Stanton</h6>
+    <h6>Duartion:98<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:G</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3444113945" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0MjEyODQzMF5BMl5BanBnXkFtZTcwMTczMjQ4Mg@@._V1_UY1200_CR88,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>2012 </h4>
+    <h6>Director:Roland Emmerich</h6>
+    <h6>Duartion:158<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3629253145" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MTI5ODU4MV5BMl5BanBnXkFtZTcwNTYyNTU4Mg@@._V1_UY1200_CR91,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>A Christmas Carol </h4>
+    <h6>Director:Robert Zemeckis</h6>
+    <h6>Duartion:96<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3634147097" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQyNzk2MjA2NF5BMl5BanBnXkFtZTgwMjEwNzk3MjE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Jupiter Ascending </h4>
+    <h6>Director:Lana Wachowski</h6>
+    <h6>Duartion:127<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1920709657" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzY3OTI0OTcyMF5BMl5BanBnXkFtZTgwNjkxNTAwOTE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Legend of Tarzan </h4>
+    <h6>Director:David Yates</h6>
+    <h6>Duartion:110<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3551507481" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjU1ODM1MzYxN15BMl5BanBnXkFtZTgwOTA4NDE2ODE@._V1_UY1200_CR91,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>X-Men: Apocalypse </h4>
+    <h6>Director:Bryan Singer</h6>
+    <h6>Duartion:144<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="324468761" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Dark Knight </h4>
+    <h6>Director:Christopher Nolan</h6>
+    <h6>Duartion:152<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="543228697" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UY1200_CR83,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Up </h4>
+    <h6>Director:Pete Docter</h6>
+    <h6>Duartion:96<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2117665561" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0OTQ3MzE3MV5BMl5BanBnXkFtZTcwMDQyMzMzMg@@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Monsters vs. Aliens </h4>
+    <h6>Director:Rob Letterman</h6>
+    <h6>Duartion:94<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="447873305" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Iron Man </h4>
+    <h6>Director:Jon Favreau</h6>
+    <h6>Duartion:126<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2781978137" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjAzNzk5MzgyNF5BMl5BanBnXkFtZTcwOTE4NDU5Ng@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Hugo </h4>
+    <h6>Director:Martin Scorsese</h6>
+    <h6>Duartion:126<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2374239001" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTU4NDIzMDY1OV5BMl5BanBnXkFtZTcwNjQxMzk3MQ@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Mummy: Tomb of the Dragon Emperor </h4>
+    <h6>Director:Rob Cohen</h6>
+    <h6>Duartion:112<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="155694361" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjM1OTMxNzUyM15BMl5BanBnXkFtZTgwNjYzMTIzOTE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Suicide Squad </h4>
+    <h6>Director:David Ayer</h6>
+    <h6>Duartion:123<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3591679257" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5OTk4MTM3M15BMl5BanBnXkFtZTgwODcxNjg3MDE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Edge of Tomorrow </h4>
+    <h6>Director:Doug Liman</h6>
+    <h6>Duartion:113<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="648086041" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzMTU1NzQwNl5BMl5BanBnXkFtZTcwNDg4NzMzMw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>G.I. Joe: The Rise of Cobra </h4>
+    <h6>Director:Stephen Sommers</h6>
+    <h6>Duartion:118<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="203730969" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Inside Out </h4>
+    <h6>Director:Pete Docter</h6>
+    <h6>Duartion:95<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1075360537" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3NTUzNTI4MV5BMl5BanBnXkFtZTgwNjU0NjU5NzE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Jungle Book </h4>
+    <h6>Director:Jon Favreau</h6>
+    <h6>Duartion:106<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2256077849" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Iron Man 2 </h4>
+    <h6>Director:Jon Favreau</h6>
+    <h6>Duartion:124<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2494275609" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1NDA0MTk5OV5BMl5BanBnXkFtZTcwMTM4NDMwNw@@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Snow White and the Huntsman </h4>
+    <h6>Director:Rupert Sanders</h6>
+    <h6>Duartion:132<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1449634329" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjAwMzAzMzExOF5BMl5BanBnXkFtZTgwOTcwMDA5MTE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Maleficent </h4>
+    <h6>Director:Robert Stromberg</h6>
+    <h6>Duartion:97<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3448876057" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTgwODk3NDc1N15BMl5BanBnXkFtZTgwNTc1NjQwMjE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Dawn of the Planet of the Apes </h4>
+    <h6>Director:Matt Reeves</h6>
+    <h6>Duartion:130<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1339271193" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MjE2NzE0OV5BMl5BanBnXkFtZTgwNTU5MjE1MDE@._V1_UY1200_CR64,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>47 Ronin </h4>
+    <h6>Director:Carl Rinsch</h6>
+    <h6>Duartion:128<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="111127321" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzA2NDkwODAwM15BMl5BanBnXkFtZTgwODk5MTgzMTE@._V1_UY1200_CR96,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Captain America: The Winter Soldier </h4>
+    <h6>Director:Anthony Russo</h6>
+    <h6>Duartion:136<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="2299660057" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0OTU1NzkxMl5BMl5BanBnXkFtZTcwMzI2NDUzMw@@._V1_UY1200_CR89,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Shrek Forever After </h4>
+    <h6>Director:Mike Mitchell</h6>
+    <h6>Duartion:93<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="4284068121" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ0MDc5MjAyNF5BMl5BanBnXkFtZTgwMzU5Mzk1NjE@._V1_UY1200_CR94,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Tomorrowland </h4>
+    <h6>Director:Brad Bird</h6>
+    <h6>Duartion:130<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="513650457" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMDliOTIzNmUtOTllOC00NDU3LWFiNjYtMGM0NDc1YTMxNjYxXkEyXkFqcGdeQXVyNTM3NzExMDQ@._V1_UY1200_CR105,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Big Hero 6 </h4>
+    <h6>Director:Don Hall</h6>
+    <h6>Duartion:102<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3621299225" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzMxNTExOTkyMF5BMl5BanBnXkFtZTcwMzEyNDc0OA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Wreck-It Ralph </h4>
+    <h6>Director:Rich Moore</h6>
+    <h6>Duartion:101<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3946558489" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIyMTg5MTg4OV5BMl5BanBnXkFtZTgwMzkzMjY5NzE@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Independence Day: Resurgence </h4>
+    <h6>Director:Roland Emmerich</h6>
+    <h6>Duartion:120<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1158218777" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5NDQyMjc2NF5BMl5BanBnXkFtZTcwMjg5ODcyMw@@._V1_UY1200_CR88,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>How to Train Your Dragon </h4>
+    <h6>Director:Dean DeBlois</h6>
+    <h6>Duartion:98<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1441049625" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTAwMjU5OTgxNjZeQTJeQWpwZ15BbWU4MDUxNDYxODEx._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Guardians of the Galaxy </h4>
+    <h6>Director:James Gunn</h6>
+    <h6>Duartion:121<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="1586278169" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_UY1200_CR69,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Interstellar </h4>
+    <h6>Director:Christopher Nolan</h6>
+    <h6>Duartion:169<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="4219471385" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Inception </h4>
+    <h6>Director:Christopher Nolan</h6>
+    <h6>Duartion:148<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="3987191321" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODQ4ZmIzNWMtY2NiYi00MmM1LWFjMGQtMDE0Nzc1NzhjNjEyXkEyXkFqcGdeQXVyNDUwNzM4MzQ@._V1_UY1200_CR112,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>Godzilla Resurgence </h4>
+    <h6>Director:Hideaki Anno</h6>
+    <h6>Duartion:120<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:N/A</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="650683417" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg" width="220" height="342">
+    <h4>The Hobbit: An Unexpected Journey </h4>
+    <h6>Director:Peter Jackson</h6>
+    <h6>Duartion:182<span style="font-size:10px"> mins</span></h6>
+    <h6>Rating:PG-13</h6>
+</div>
+
+    </div>
+  </body>
+</html>
