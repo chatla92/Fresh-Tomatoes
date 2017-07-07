@@ -37,7 +37,6 @@ main_page_head = '''
         .movie-tile {
             margin-bottom: 20px;
             padding-top: 20px;
-            display: block;
         }
         .movie-tile:hover {
             background-color: #EEE;
@@ -127,10 +126,11 @@ main_page_content = '''
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-IMDB-id="{trailer_IMDB_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
-    <h4>{movie_title}</h4>
-    <h6>Director:{Director}</h6>
-    <h6>Duartion:{runtime}<span style="font-size:10px"> mins</span></h6>
-    <h6>Rating:{rating}</h6>
+    <h2>{movie_title}</h2>
+    <h5>Director:{Director}</h5>
+    <h5style="text-align:left;float:left;>Duartion:{runtime}</h5>
+    <h5style="text-align:right;float:right;>(in mins)</h5>
+    <h5>Rating:{rating}</h5>
 </div>
 '''
 
